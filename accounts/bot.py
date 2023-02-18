@@ -24,6 +24,14 @@ trainer.train([
     "hostel",
     "hostelfee",
 ])
+trainer.train([
+    "my gpa",
+    "gpa",
+])
+trainer.train([
+    "my attendance",
+    "attendance",
+])
 def classify_intent(text):
     return chatbot.get_response(text)
 

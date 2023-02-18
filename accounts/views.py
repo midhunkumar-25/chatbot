@@ -49,7 +49,12 @@ def chatbotquery(request):
     if str(response) == "hostelfee":
         res=HostelFee.objects.all().values()
         return HttpResponse(res)
-    
+    if str(response) == "gpa":
+        res=Student.objects.get(account=request.user)
+        return HttpResponse(res.gpa)
+    if str(response) == "attendance":
+        res=Student.objects.get(account=request.user)
+        return HttpResponse(res.attendance)
         
     return HttpResponse(response)
            
