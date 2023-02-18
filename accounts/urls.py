@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns = [
     path('index', views.index,name="index"),
-    path('studentlogin', views.studentlogin,name="studentlogin"),
-    path('studentregister', views.studentregister,name="studentregister") ,
-    path('logout',views.logout,name="logout"),
+    path('login', views.loginMethod,name="login"),
+    path('register', views.registerMethod,name="register") ,
+    path('logout',views.logoutMethod,name="logout"),
+    path('chat',views.chatbotPage,name="chatbotPage"),
+    path('chatquery',views.chatbotquery,name="chatbotquery"),
      ]

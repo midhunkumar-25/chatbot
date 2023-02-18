@@ -112,7 +112,6 @@ h2{
     width:50px;
     height:50px;
     border-radius:50%;
-    background:url(bot.jpg);
     background-size:100%;
     margin:10px;
 }
@@ -136,15 +135,19 @@ h3{
     <div id="main">
  
     <h2>ChatBot</h2>
-    <a   href="#" onclick="javascript:window.history.back(-1);return false;">logout<i class="fas fa-paper-plane"></i></a>
+    {{ user.username }}
+    {{ user.email }}
+    <a   href="../logout">logout<i class="fas fa-paper-plane"></i></a>
         <div id="msg">
             <div id="robot">
             <div class="bot"></div>
             <h3>ChatBot</h3>
+            <p id="csrf">          {% csrf_token %}</p>
           </div>
         </div>
      
         <div class="input">
+
             <input type="text" id="msg_send" placeholder="New Message"> <button class="send" id="reply">Send <i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
@@ -170,11 +173,17 @@ document.getElementById('reply').addEventListener("click", async (e) => {
     else{
      
         var res = "";
-        /*await axios.get(`https://api.monkedev.com/fun/chat?msg=${req}`).then(data => {
-            res = JSON.stringify(data.data.response)
-        })*/
-        res=req;  
-        let data_req = document.createElement('div');
+        var xhr = new XMLHttpRequest();
+        csrftoken=document.getElementsByName("csrfmiddlewaretoken")[0].value
+        xhr.open("POST", "/chatquery", true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("X-CSRFToken", csrftoken); 
+        xhr.send(req);
+        xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            console.log(this.response)
+            res = this.response
+            let data_req = document.createElement('div');
         let data_res = document.createElement('div');
  
         let container1 = document.createElement('div');
@@ -200,6 +209,9 @@ document.getElementById('reply').addEventListener("click", async (e) => {
         container2.appendChild(data_res);
  
         document.getElementById('msg_send').value = "";
+          }
+        };
+        
  
     function scroll() {
         var scrollMsg = document.getElementById('msg')

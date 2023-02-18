@@ -1,37 +1,64 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from .models import Student,Staff,CollegeFee,Placements,HostelFee
+from .bot import classify_intent
 #from .models import Users
 # Create your views here.
 
 def index(request):
     return render(request,'index.html')
 
-def studentlogin(request):
+def loginMethod(request):
     if request.method== 'POST':
+        print("login consol")
+        print(request.user)
         email= request.POST['MailId']
         password = request.POST['password']
-        status=request.POST['cap']
-        user = User.objects.filter(email=email ,password=password).first()
-        if status=="valid" and User.objects.filter(email=email,password=password).exists():
-            request.session['profile']={'username':user.username,'MailId':user.email,'Password':user.password}
-            userses=request.session['profile']
-            request.session.modified=True
-            return render(request,'studentchatbot.html',{"userses":userses})
+        userobj = User.objects.filter(email=email).first()   
+        user = authenticate(username=userobj.username,password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('../chat')
         else:
             messages.info(request,'invalid credentials')
             return render(request,'signinforstudent.html')    
 
     else:
         return render(request,'signinforstudent.html')   
+
+def chatbotPage(request):
+     if request.user.is_authenticated:
+        return render(request,'studentchatbot.html',{'user':request.user})  
+     else:
+        return redirect('login')
      
+def chatbotquery(request):
+    response =classify_intent(request.body.decode('ASCII'))
+    print(str(response))
+    if str(response) == "college fee":
+        res=CollegeFee.objects.all().values()
+        return HttpResponse(res)
+    if str(response) == "placements":
+        res=Placements.objects.all().values()
+        return HttpResponse(res)
+    if str(response) == "hostelfee":
+        res=HostelFee.objects.all().values()
+        return HttpResponse(res)
+    
+        
+    return HttpResponse(response)
+           
+
 def studentprofile(request):
     user=request.session['profile']
     return render(request,'studentprofile.html',{'user':user}) 
 
-def studentregister(request):
+def registerMethod(request):
     if request.method == 'POST':
         password=request.POST['createpassword']
         secpassword=request.POST['confirmpassword']
@@ -43,18 +70,30 @@ def studentregister(request):
                 if studentitr.email==request.POST['MailId']:
                     messages.info(request,'email taken')
                     return render(request,'studentregister.html')
-            student=User()
-            student.username=request.POST['username']
-            student.email=request.POST['MailId']
+            user=User()
+            user.username=request.POST['username']
+            user.email=request.POST['MailId']
             #student.user.regno=request.POST['regno']
-            student.password=password
-            student.save()
-            return redirect('studentlogin')
+            user.password=password
+            user.save()
+            if request.POST['type'] == "Student":
+                student=Student()
+                student.rollno=request.POST['id'] 
+                student.department=request.POST['department'] 
+                student.account=user
+                student.save()
+            if request.POST['type'] == "Staff":
+                staff=Staff()
+                staff.staffid=request.POST['id'] 
+                staff.department=request.POST['department'] 
+                staff.account=user
+                staff.save()
+            return redirect('login')
         else:
             return render(request,'studentregister.html')
     else:
         return render(request,'studentregister.html')
 
-def logout(request):
-    auth.logout(request)
-    return redirect('/')  
+def logoutMethod(request):
+    logout(request)
+    return redirect('login')  

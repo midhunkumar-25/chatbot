@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Student Registeration</title>
+    <title>  Registeration</title>
     
      
   
@@ -171,7 +171,7 @@
  
 
   <div class="container">
-    <div class="title"> Student Registration</div>
+    <div class="title">  Registration</div>
     <div class="content">
       {% for msg in messages %}
       <h3>{{msg}}</h3>
@@ -187,10 +187,6 @@
             <input type="text" placeholder="Enter your email" required name="MailId">
           </div>
           <div class="input-box">
-            <span class="details">Roll Number</span>
-            <input type="text" placeholder="Roll Number" required name="regno">
-          </div>
-          <div class="input-box">
             <span class="details">Create Password</span>
             <input type="text" name="createpassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Create Password"  required >
           </div>
@@ -198,7 +194,31 @@
             <span class="details">Confirm Password</span>
             <input type="text" name="confirmpassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Confirm Password" required>
           </div>
-        </div><a href="/studentregister">
+          <div class="input-box" >
+            <span class="details">User type</span>
+            <select name="type">
+              <option value="Student">Student</option>
+              <option value="Staff">Staff</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">ID</span>
+            <input type="text" placeholder="Enter your ID" required name="id">
+          </div>
+          <div class="input-box">
+            <span class="details">Department</span>
+            <select name="department">
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="CSE">CSE</option>
+              <option value="IT">IT</option>
+              <option value="MEC">MEC</option>
+            </select>
+          </div>
+          <div id="inputFieldsContainer" >
+
+          </div>
+        </div><a href="/register">
         <div class="button">
           <input type="submit" value="Register"></a>
         </div>
