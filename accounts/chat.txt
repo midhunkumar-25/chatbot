@@ -1,0 +1,57 @@
+2/26/23, 10:33 AM - Gokul Alpha: <Media omitted>
+2/26/23, 10:38 AM - Midhun: I'm like chatbot.Ask qestions here, one by one ,i will answer .wait until i reply n answer. I will export our WhatsApp chat to train.
+2/26/23, 10:48 AM - Gokul Alpha: Hi
+2/26/23, 10:48 AM - Midhun: How may I help you
+2/26/23, 10:48 AM - Gokul Alpha: Hostel fees
+2/26/23, 10:50 AM - Midhun: hostelfee
+2/26/23, 10:50 AM - Gokul Alpha: Ok
+2/26/23, 10:50 AM - Gokul Alpha: Placement
+2/26/23, 10:50 AM - Gokul Alpha: <Media omitted>
+2/26/23, 10:51 AM - Midhun: placements
+2/26/23, 10:52 AM - Gokul Alpha: Attendance
+2/26/23, 10:52 AM - Midhun: attendance
+2/26/23, 10:52 AM - Gokul Alpha: Gpa
+2/26/23, 10:52 AM - Midhun: gpa
+2/26/23, 10:52 AM - Gokul Alpha: College fees
+2/26/23, 10:53 - Midhun: college fee
+2/26/23, 10:53 - Gokul Alpha: Rollno
+2/26/23, 10:54 - Midhun: rollno
+2/26/23, 10:54 - Gokul Alpha: Department
+2/26/23, 10:54 - Midhun: department
+2/26/23, 10:55 - Gokul Alpha: Councelling code
+2/26/23, 10:58 - Gokul Alpha: What is my rollno?
+2/26/23, 10:59 - Midhun: rollno
+2/26/23, 11:00 - Gokul Alpha: What is my college fees
+2/26/23, 11:00 - Midhun: college fee
+2/26/23, 11:00 - Gokul Alpha: What is my semester fees
+2/26/23, 11:00 - Midhun: semester fee
+2/26/23, 11:01 - Gokul Alpha: What is my  cgpa?
+2/26/23, 11:01 - Midhun: gpa
+2/26/23, 11:01 - Gokul Alpha: What is my current cgpa?
+2/26/23, 11:01 - Midhun: gpa
+2/26/23, 11:02 - Gokul Alpha: What is my hostel fees?
+2/26/23, 11:02 - Midhun: hostelfee
+2/26/23, 11:02 - Gokul Alpha: What is my attendance percentage?
+2/26/23, 11:03 - Midhun: attendance
+2/26/23, 11:03 - Gokul Alpha: What is my staff Id?
+2/26/23, 11:04 - Midhun: staffid
+2/26/23, 11:04 - Gokul Alpha: What is my salary?
+2/26/23, 11:05 - Midhun: salary
+2/26/23, 11:08 - Gokul Alpha: What is my mobile number?
+2/26/23, 11:09 - Midhun: mobile
+2/26/23, 11:09 - Gokul Alpha: What is my class teacher Mobile number?
+2/26/23, 11:10 - Midhun: staff mobile
+2/26/23, 11:10 - Gokul Alpha: What is my staff Mobile number?
+2/26/23, 11:10 - Midhun: Staff mobile
+2/26/23, 11:20 - Gokul Alpha: I want Gokul details
+2/26/23, 11:21 - Midhun: student details
+2/26/23, 11:21 - Gokul Alpha: I want mithunkumar details
+2/26/23, 11:21 - Midhun: student details
+2/26/23, 11:22 - Gokul Alpha: I want to change some modifications in Gokul details
+2/26/23, 11:23 - Midhun: sure
+2/26/23, 11:23 - Gokul Alpha: Please change Gokul gpa: 9.5
+2/26/23, 11:24 - Midhun: change gpa
+2/26/23, 11:24 - Gokul Alpha: Thank you
+2/26/23, 11:24 - Midhun: Welcome
+2/26/23, 11:36 - Gokul Alpha: gr8962@srmist.edu.in
+2/26/23, 11:36 - Gokul Alpha: Netid#92

@@ -40,6 +40,32 @@ def chatbotPage(request):
 def chatbotquery(request):
     response =classify_intent(request.body.decode('ASCII'))
     print(str(response))
+    if str(response) == "staff mobile":
+        res=Student.objects.get(account=request.user)
+        res=Staff.objects.get(staffid=res.teacher)
+        return HttpResponse(res.phone)
+    if str(response) == "mobile":
+        res=Student.objects.get(account=request.user)
+        if(res):
+            return HttpResponse(res.phone)
+        s=Staff.objects.get(account=request.user)
+        if(s):
+            return HttpResponse(s.phone)
+    if str(response) == "salary":
+        res=Staff.objects.get(account=request.user)
+        return HttpResponse(res.salary)
+    if str(response) == "staffid":
+        res=Staff.objects.get(account=request.user)
+        if(res):
+            return HttpResponse(res.staffid)
+    if str(response) == "rollno":
+        res=Student.objects.get(account=request.user)
+        return HttpResponse(res.rollno)
+    if str(response) == "department":
+        res=Student.objects.get(account=request.user)
+        if(res):
+            res=Staff.objects.get(account=request.user)
+        return HttpResponse(res.department)
     if str(response) == "college fee":
         res=CollegeFee.objects.all().values()
         return HttpResponse(res)
@@ -55,8 +81,9 @@ def chatbotquery(request):
     if str(response) == "attendance":
         res=Student.objects.get(account=request.user)
         return HttpResponse(res.attendance)
-        
-    return HttpResponse(response)
+    if str(response)!="":
+        return HttpResponse(response)       
+    return HttpResponse("sorry , i cant unserstand")
            
 
 def studentprofile(request):
@@ -79,7 +106,7 @@ def registerMethod(request):
             user.username=request.POST['username']
             user.email=request.POST['MailId']
             #student.user.regno=request.POST['regno']
-            user.password=password
+            user.set_password(password)
             user.save()
             if request.POST['type'] == "Student":
                 student=Student()
