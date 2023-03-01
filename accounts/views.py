@@ -9,7 +9,7 @@ from .models import Student,Staff,CollegeFee,Placements,HostelFee
 from .bot import classify_intent
 #from .models import Users
 # Create your views here.
-
+from django.core.exceptions import ObjectDoesNotExist
 def index(request):
     return render(request,'index.html')
 
@@ -45,7 +45,10 @@ def chatbotquery(request):
         res=Staff.objects.get(staffid=res.teacher)
         return HttpResponse(res.phone)
     if str(response) == "mobile":
-        res=Student.objects.get(account=request.user)
+        try:
+            res=Student.objects.get(account=request.user)
+        except ObjectDoesNotExist:
+            res = 0
         if(res):
             return HttpResponse(res.phone)
         s=Staff.objects.get(account=request.user)
